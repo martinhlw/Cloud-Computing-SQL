@@ -42,7 +42,6 @@ const insertFood = async (request, h) => {
     }
 }
 
-
 const getFoods = async (request, h) => {
 
     try {
