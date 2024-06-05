@@ -17,18 +17,18 @@ let pool;
 })();
 
 
-const insertStudent = async (request, h) => {
+const insertFood = async (request, h) => {
 
-    const { name, univ, semester } = request.payload;
+    const { nama_makanan, bahan, cara_memasak, photo_url } = request.payload;
 
     try {
 
-        const query = 'INSERT INTO student(name, univ, semester) VALUES(?, ?, ?)';
-        const queryResult = await pool.query(query, [name, univ, semester]);
+        const query = 'INSERT INTO data_makanan(nama_makanan, bahan, cara_memasak, photo_url) VALUES (?, ?, ?, ?)';
+        const queryResult = await pool.query(query, [nama_makanan, bahan, cara_memasak, photo_url]);
 
         const response = h.response({
             status: 'success',
-            message: 'Data berhasil diinput'
+            message: 'Data makanan berhasil diinput'
         });
         response.code(200);
         return response;
@@ -42,11 +42,12 @@ const insertStudent = async (request, h) => {
     }
 }
 
-const getStudent = async (request, h) => {
+
+const getFoods = async (request, h) => {
 
     try {
 
-        const query = 'SELECT * FROM student';
+        const query = 'SELECT * FROM data_makanan';
         const queryResult = await pool.query(query);
 
         const response = h.response({
