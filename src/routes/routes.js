@@ -1,4 +1,4 @@
-const { convertBinary, fibonacci, insertStudent, getStudent } = require('./handler.js');
+const { convertBinary, fibonacci, insertStudent, getStudent } = require('../exceptions/handler');
 
 const routes = [
     {
