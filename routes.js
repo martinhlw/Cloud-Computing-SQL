@@ -1,8 +1,8 @@
 const {
     convertBinary,
     fibonacci,
-    insertStudent,
-    getStudent,
+    insertFood,
+    getFoods,
     getCookingInstructions,
     getIndonesianFoodNames,
     getDetectedFoodIngredients,
@@ -38,6 +38,16 @@ const routes = [
         path: '/fibonacci',
         method: 'POST',
         handler: fibonacci
+    },
+    {
+        path: '/insertFoods',
+        method: 'POST',
+        handler: insertFood
+    },
+    {
+        path: '/getFoods',
+        method: 'GET',
+        handler: getFoods
     },
     {
         path: '/cooking-instructions/{id}',
