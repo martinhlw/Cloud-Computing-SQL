@@ -63,7 +63,7 @@ const getFoods = async (request, h) => {
 const getCookingInstructions = async (request, h) => {
     const { id } = request.params;
     try {
-        const query = 'SELECT cara_memasak FROM data_makanan WHERE id = ?';
+        const query = 'SELECT cara_memasak FROM data_makanan WHERE makanan_id = ?';
         const queryResult = await pool.query(query, [id]);
         const response = h.response({
             status: 'success',
@@ -106,7 +106,7 @@ const getIndonesianFoodNames = async (request, h) => {
 const getDetectedFoodIngredients = async (request, h) => {
     const { id } = request.params;
     try {
-        const query = 'SELECT bahan FROM data_makanan WHERE id = ?';
+        const query = 'SELECT bahan FROM data_makanan WHERE makanan_id = ?';
         const queryResult = await pool.query(query, [id]);
         const response = h.response({
             status: 'success',
