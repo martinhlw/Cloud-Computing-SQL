@@ -1,4 +1,13 @@
-const { convertBinary, fibonacci, insertStudent, getStudent } = require('./handler.js');
+const {
+    convertBinary,
+    fibonacci,
+    insertStudent,
+    getStudent,
+    getCookingInstructions,
+    getIndonesianFoodNames,
+    getDetectedFoodIngredients,
+    scanFoodFromCamera
+} = require('./handler.js');
 
 const routes = [
     {
@@ -31,15 +40,25 @@ const routes = [
         handler: fibonacci
     },
     {
-        path: '/insertStudent',
-        method: 'POST',
-        handler: insertStudent
+        path: '/cooking-instructions/{id}',
+        method: 'GET',
+        handler: getCookingInstructions
     },
     {
-        path: '/getStudent',
+        path: '/indonesian-food-names',
         method: 'GET',
-        handler: getStudent
+        handler: getIndonesianFoodNames
     },
+    {
+        path: '/detected-food-ingredients/{id}',
+        method: 'GET',
+        handler: getDetectedFoodIngredients
+    },
+    {
+        path: '/scan-food',
+        method: 'POST',
+        handler: scanFoodFromCamera
+    }
 ];
 
 module.exports = routes;
