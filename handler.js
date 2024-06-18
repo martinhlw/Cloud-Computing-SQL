@@ -18,10 +18,10 @@ let pool;
 
 // Insert food function
 const insertFood = async (request, h) => {
-    const { nama_makanan, bahan, cara_memasak, photo_url } = request.payload;
+    const { dish_name, ingridients, description} = request.payload;
     try {
-        const query = 'INSERT INTO data_makanan(nama_makanan, bahan, cara_memasak, photo_url) VALUES (?, ?, ?, ?)';
-        const queryResult = await pool.query(query, [nama_makanan, bahan, cara_memasak, photo_url]);
+        const query = 'INSERT INTO food_data(dish_name, ingridients, description) VALUES (?, ?, ?)';
+        const queryResult = await pool.query(query, [dish_name, ingridients, description]);
         const response = h.response({
             status: 'success',
             message: 'Data makanan berhasil diinput'
@@ -41,7 +41,7 @@ const insertFood = async (request, h) => {
 // Get foods function
 const getFoods = async (request, h) => {
     try {
-        const query = 'SELECT * FROM data_makanan';
+        const query = 'SELECT * FROM food_data';
         const queryResult = await pool.query(query);
         const response = h.response({
             status: 'success',
@@ -63,7 +63,7 @@ const getFoods = async (request, h) => {
 const getCookingInstructions = async (request, h) => {
     const { id } = request.params;
     try {
-        const query = 'SELECT cara_memasak FROM data_makanan WHERE makanan_id = ?';
+        const query = 'SELECT description FROM food_data WHERE id = ?';
         const queryResult = await pool.query(query, [id]);
         const response = h.response({
             status: 'success',
@@ -84,7 +84,7 @@ const getCookingInstructions = async (request, h) => {
 // Get Indonesian food names function
 const getIndonesianFoodNames = async (request, h) => {
     try {
-        const query = 'SELECT nama_makanan FROM data_makanan';
+        const query = 'SELECT dish_name FROM food_data';
         const queryResult = await pool.query(query);
         const response = h.response({
             status: 'success',
@@ -106,7 +106,7 @@ const getIndonesianFoodNames = async (request, h) => {
 const getDetectedFoodIngredients = async (request, h) => {
     const { id } = request.params;
     try {
-        const query = 'SELECT bahan FROM data_makanan WHERE makanan_id = ?';
+        const query = 'SELECT ingridients FROM food_data WHERE id = ?';
         const queryResult = await pool.query(query, [id]);
         const response = h.response({
             status: 'success',
