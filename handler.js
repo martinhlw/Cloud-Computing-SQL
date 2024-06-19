@@ -83,9 +83,10 @@ const getCookingInstructions = async (request, h) => {
 
 // Get Indonesian food names function
 const getIndonesianFoodNames = async (request, h) => {
+    const { id } = request.params;
     try {
-        const query = 'SELECT dish_name FROM food_data';
-        const queryResult = await pool.query(query);
+        const query = 'SELECT dish_name FROM food_data WHERE id = ?';
+        const queryResult = await pool.query(query, [id]);
         const response = h.response({
             status: 'success',
             result: queryResult
@@ -101,6 +102,7 @@ const getIndonesianFoodNames = async (request, h) => {
         return response;
     }
 }
+
 
 // Get detected food ingredients function
 const getDetectedFoodIngredients = async (request, h) => {

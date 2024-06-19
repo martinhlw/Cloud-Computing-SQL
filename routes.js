@@ -55,7 +55,7 @@ const routes = [
         handler: getCookingInstructions
     },
     {
-        path: '/indonesian-food-names',
+        path: '/indonesian-food-names/{id}',
         method: 'GET',
         handler: getIndonesianFoodNames
     },
