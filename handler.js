@@ -20,7 +20,7 @@ let pool;
 const insertFood = async (request, h) => {
     const { dish_name, ingridients, description} = request.payload;
     try {
-        const query = 'INSERT INTO food_data(dish_name, ingridients, description) VALUES (?, ?, ?)';
+        const query = 'INSERT INTO food_data(dish_name, ingredients, description) VALUES (?, ?, ?)';
         const queryResult = await pool.query(query, [dish_name, ingridients, description]);
         const response = h.response({
             status: 'success',
